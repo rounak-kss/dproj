@@ -1,17 +1,9 @@
-<nav md-tab-nav-bar>
-  <a md-tab-link [routerLink]="['']" routerLinkActive="isActive">
-    {{tabLink.label}}
-  </a>
-</nav> 
- 
- <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-            mdl-layout--fixed-tabs">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header       mdl-layout--fixed-tabs">
   <header class="mdl-layout__header">
     <div class="mdl-layout__tab-bar">
       <a class="mdl-layout__tab" [routerLink] = "['']" routerLinkActive="is-active" routerLinkActiveOptions="{exact: true}">Tab 1</a>
       <a class="mdl-layout__tab" [routerLink] = "['academics']" routerLinkActive="is-active"  routerLinkActiveOptions="{exact: true}">Tab 2</a>
     </div>
   </header>
-  
 <router-outlet></router-outlet>
 </div>
