@@ -1,29 +1,4 @@
-   <!--<mdl-layout mdl-layout-fixed-header >
-      <mdl-layout-header>
-      </mdl-layout-header>
-      <mdl-layout-content>
-         <mdl-layout-tab-panel>
-					<mdl-tab-panel-title>
-						 <a [routerLink] = "['academics']" class="mdl-layout__tab">Academics</a>
-					</mdl-tab-panel-title>
-                    <mdl-tab-panel-content>						
-                        <router-outlet></router-outlet>
-					</mdl-tab-panel-content>
-         </mdl-layout-tab-panel>
-         <mdl-layout-tab-panel>
-					<mdl-tab-panel-title>
-						 <a [routerLink] = "['student']" class="mdl-layout__tab">Student</a>
-					</mdl-tab-panel-title>
-         </mdl-layout-tab-panel>
-         <mdl-layout-tab-panel>
-					<mdl-tab-panel-title>
-						 <a [routerLink] = "['teacher']" class="mdl-layout__tab">Teacher</a>
-					</mdl-tab-panel-title>
-         </mdl-layout-tab-panel>
-      </mdl-layout-content>
-   </mdl-layout>-->
-
-   <mdl-layout #mdlLayout1="mdlLayout" mdl-layout-fixed-header mdl-layout-header-seamed>
+   <mdl-layout #slider="mdlLayout" mdl-layout-fixed-header mdl-layout-header-seamed>
       <mdl-layout-header>
          <mdl-layout-header-row>
             <mdl-layout-title>Admin</mdl-layout-title>
@@ -39,9 +14,9 @@
       <mdl-layout-drawer>
          <mdl-layout-title>Admin</mdl-layout-title>
          <nav class="mdl-navigation">
-               <a [routerLink] = "['academics']" class="mdl-navigation__link" (click)="mdlLayout1.closeDrawer()">Academics</a>
-               <a [routerLink] = "['student']" class="mdl-navigation__link" (click)="mdlLayout1.closeDrawer()">Student</a>
-               <a [routerLink] = "['teacher']" class="mdl-navigation__link" (click)="mdlLayout1.closeDrawer()">Teacher</a>
+               <a [routerLink] = "['academics']" class="mdl-navigation__link" (click)="slider.closeDrawer()">Academics</a>
+               <a [routerLink] = "['student']" class="mdl-navigation__link" (click)="slider.closeDrawer()">Student</a>
+               <a [routerLink] = "['teacher']" class="mdl-navigation__link" (click)="slider.closeDrawer()">Teacher</a>
          </nav>
       </mdl-layout-drawer>
       <mdl-layout-content>
