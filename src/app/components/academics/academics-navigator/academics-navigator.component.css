@@ -1,0 +1,6 @@
+.mdl-card {
+    width: 100%;
+}
+.mdl-card__supporting-text {
+    min-height: 60px;
+}
