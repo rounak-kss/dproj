@@ -4,18 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MdlModule } from 'angular2-mdl';
 import { AppComponent } from './app.component';
-import { AcademicsComponent } from './components/academics/academics.component';
+import { AcademicsComponent } from './admin/academics/academics.component';
 import { routing } from './app.routing';
-import { StudentComponent } from './components/student/student.component';
-import { TeacherComponent } from './components/teacher/teacher.component';
+import { StudentComponent } from './admin/student/student.component';
+import { TeacherComponent } from './admin/teacher/teacher.component';
 import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './components/admin.component';
-import { FeestructureComponent } from './components/academics/feestructure/feestructure.component';
-import { SyllabusComponent } from './components/academics/syllabus/syllabus.component';
-import { TimetableComponent } from './components/academics/timetable/timetable.component';
-import { AcademicyearComponent } from './components/academics/academicyear/academicyear.component';
-import { AcademicsNavigatorComponent } from './components/academics/academics-navigator/academics-navigator.component';
-import { FeelistComponent } from './components/academics/feestructure/feelist.component';
+import { AdminComponent } from './admin/admin.component';
+import { FeestructureComponent } from './admin/academics/feestructure/feestructure.component';
+import { SyllabusComponent } from './admin/academics/syllabus/syllabus.component';
+import { TimetableComponent } from './admin/academics/timetable/timetable.component';
+import { AcademicyearComponent } from './admin/academics/academicyear/academicyear.component';
+import { AcademicsNavigatorComponent } from './admin/academics/academics-navigator/academics-navigator.component';
+import { FeelistComponent } from './admin/academics/feestructure/feelist.component';
+import { DatabaseService } from './services/database.service';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { FeelistComponent } from './components/academics/feestructure/feelist.co
     routing,
     MdlModule,
   ],
-  providers: [],
+  providers: [DatabaseService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
