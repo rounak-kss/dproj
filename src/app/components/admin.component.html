@@ -1,8 +1,24 @@
-<div class="mdl-layout mdl-layout--fixed-header  mdl-layout--fixed-tabs">
-    <div class="mdl-layout__tab-bar dp-height">
-        <a class="mdl-layout__tab" [routerLink] = "['academics']" routerLinkActive="dp-active">Academics</a>
-        <a class="mdl-layout__tab" [routerLink] = "['student']" routerLinkActive="dp-active">Student</a>
-        <a class="mdl-layout__tab" [routerLink] = "['teacher']" routerLinkActive="dp-active">Teacher</a>
-    </div>
-</div>
-<router-outlet></router-outlet>
+   <mdl-layout mdl-layout-fixed-header >
+      <mdl-layout-header>
+      </mdl-layout-header>
+      <mdl-layout-content>
+         <mdl-layout-tab-panel>
+					<mdl-tab-panel-title>
+						 <a [routerLink] = "['academics']" class="mdl-layout__tab">Academics</a>
+					</mdl-tab-panel-title>
+                    <mdl-tab-panel-content>						
+                        <router-outlet></router-outlet>
+					</mdl-tab-panel-content>
+         </mdl-layout-tab-panel>
+         <mdl-layout-tab-panel>
+					<mdl-tab-panel-title>
+						 <a [routerLink] = "['student']" class="mdl-layout__tab">Student</a>
+					</mdl-tab-panel-title>
+         </mdl-layout-tab-panel>
+         <mdl-layout-tab-panel>
+					<mdl-tab-panel-title>
+						 <a [routerLink] = "['teacher']" class="mdl-layout__tab">Teacher</a>
+					</mdl-tab-panel-title>
+         </mdl-layout-tab-panel>
+      </mdl-layout-content>
+   </mdl-layout>

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MdlModule } from 'angular2-mdl';
 import { AppComponent } from './app.component';
 import { AcademicsComponent } from './components/academics/academics.component';
 import { routing } from './app.routing';
@@ -14,6 +15,7 @@ import { SyllabusComponent } from './components/academics/syllabus/syllabus.comp
 import { TimetableComponent } from './components/academics/timetable/timetable.component';
 import { AcademicyearComponent } from './components/academics/academicyear/academicyear.component';
 import { AcademicsNavigatorComponent } from './components/academics/academics-navigator/academics-navigator.component';
+import { FeelistComponent } from './components/academics/feestructure/feelist.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +30,14 @@ import { AcademicsNavigatorComponent } from './components/academics/academics-na
     TimetableComponent,
     AcademicyearComponent,
     AcademicsNavigatorComponent,
+    FeelistComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    MdlModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
