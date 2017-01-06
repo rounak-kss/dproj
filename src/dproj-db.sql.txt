@@ -1,0 +1,297 @@
+CREATE TABLE IF NOT EXISTS `academics` (
+  `classid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `standard` int(10) unsigned NOT NULL,
+  `section` char(1) NOT NULL,
+  `academicyear` char(7) NOT NULL,
+  `defaultsyllabusid` int(10) unsigned NOT NULL,
+  `classteacherid` int(10) unsigned NOT NULL,
+  `defaultfeesid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`classid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `administrators` (
+  `adminid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(15) NOT NULL,
+  `password` char(40) NOT NULL,
+  `privilege` char(3) NOT NULL,
+  PRIMARY KEY (`adminid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `announcements` (
+  `announcementid` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL,
+  `idtype` char(1) NOT NULL,
+  `senton` datetime NOT NULL,
+  `expireon` datetime NOT NULL,
+  `announcement` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `applications` (
+  `applicationid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `candidatename` varchar(35) NOT NULL,
+  `standard` int(10) unsigned NOT NULL,
+  `gender` char(1) NOT NULL,
+  `contactno` varchar(15) NOT NULL,
+  `dob` date NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `aadharid` varchar(16) DEFAULT NULL,
+  `filename` char(40) DEFAULT NULL,
+  `fileextn` char(3) DEFAULT NULL,
+  `fathername` varchar(35) NOT NULL,
+  `fathercontactno` varchar(15) DEFAULT NULL,
+  `fatheraadharid` varchar(16) DEFAULT NULL,
+  `mothername` varchar(35) NOT NULL,
+  `mothercontactno` varchar(15) DEFAULT NULL,
+  `motheraadharid` varchar(16) DEFAULT NULL,
+  `fatherqualification` varchar(255) DEFAULT NULL,
+  `motherqualification` varchar(255) DEFAULT NULL,
+  `guardianname` varchar(35) DEFAULT NULL,
+  `guardianaddress` varchar(255) DEFAULT NULL,
+  `guardianaadharid` varchar(16) DEFAULT NULL,
+  `status` char(1) NOT NULL DEFAULT 'p',
+  `otherdetails` char(1) NOT NULL DEFAULT 'n',
+  `details` varchar(6000) DEFAULT NULL,
+  PRIMARY KEY (`applicationid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `classes` (
+  `sno` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `classid` int(10) unsigned NOT NULL,
+  `studentid` int(10) unsigned NOT NULL,
+  `rollno` int(10) unsigned NOT NULL,
+  `syllabusid` int(10) unsigned NOT NULL DEFAULT '0',
+  `feesid` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`sno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `datesheet` (
+  `examid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `subjectid` int(10) unsigned NOT NULL,
+  `partid` int(10) unsigned NOT NULL,
+  `date` date NOT NULL,
+  `beginat` char(5) NOT NULL DEFAULT '00:00',
+  `endat` char(5) NOT NULL DEFAULT '00:00',
+  `maxmarks` int(10) unsigned NOT NULL DEFAULT '0',
+  `academicyear` char(7) NOT NULL,
+  `examtypeid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`examid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `dayattendance` (
+  `sno` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `attendanceid` int(10) unsigned NOT NULL,
+  `periodid` int(10) unsigned NOT NULL,
+  `mark` char(1) NOT NULL DEFAULT 'p',
+  PRIMARY KEY (`sno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `examtypes` (
+  `examtypeid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`examtypeid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `feeshistory` (
+  `sno` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `studentid` int(10) unsigned NOT NULL,
+  `academicyear` char(7) NOT NULL,
+  `particulars` varchar(100) NOT NULL,
+  `month_` int(10) unsigned NOT NULL,
+  `year_` int(10) unsigned NOT NULL,
+  `amount` decimal(10,2) unsigned NOT NULL,
+  `status` char(1) NOT NULL DEFAULT 'u',
+  `paidon` datetime NOT NULL,
+  PRIMARY KEY (`sno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `feesparticulars` (
+  `particularid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `particular` varchar(100) NOT NULL,
+  `frequency` int(10) unsigned NOT NULL,
+  `months` varchar(35) NOT NULL,
+  `amount` decimal(10,2) unsigned NOT NULL,
+  `feesid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`particularid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `feesstructure` (
+  `feesid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `feesname` varchar(50) NOT NULL,
+  `academicyear` char(7) NOT NULL,
+  PRIMARY KEY (`feesid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `logins` (
+  `sessionid` char(40) NOT NULL,
+  `id` int(10) unsigned NOT NULL,
+  `idtype` char(1) NOT NULL,
+  `remember` char(1) NOT NULL DEFAULT 'n',
+  `expired` char(1) NOT NULL DEFAULT 'n',
+  `createdon` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`sessionid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `messages` (
+  `messageid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `toid` int(10) unsigned NOT NULL,
+  `fromid` int(10) unsigned NOT NULL,
+  `commtype` char(2) NOT NULL DEFAULT 'ts',
+  `senton` datetime NOT NULL,
+  `read_` char(1) NOT NULL DEFAULT 'n',
+  `message` varchar(500) NOT NULL,
+  PRIMARY KEY (`messageid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `monthattendance` (
+  `attendanceid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `studentid` int(10) unsigned NOT NULL,
+  `month_` int(10) unsigned NOT NULL,
+  `year_` int(10) unsigned NOT NULL,
+  `day_` int(10) unsigned NOT NULL,
+  `mark` char(1) NOT NULL DEFAULT 'p',
+  `dayattendance` char(1) NOT NULL DEFAULT 'n',
+  PRIMARY KEY (`attendanceid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `results` (
+  `resultid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `studentid` int(10) unsigned NOT NULL,
+  `marks` int(10) unsigned NOT NULL,
+  `examid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`resultid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `stationary` (
+  `materialid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `mrp` decimal(10,2) unsigned NOT NULL,
+  `available` char(1) NOT NULL DEFAULT 'y',
+  PRIMARY KEY (`materialid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `stationaryorders` (
+  `orderid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `studentid` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL,
+  `item` char(1) NOT NULL DEFAULT 'm',
+  `paid` char(1) NOT NULL DEFAULT 'n',
+  `delivered` char(1) NOT NULL DEFAULT 'n',
+  PRIMARY KEY (`orderid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `students` (
+  `studentid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `candidatename` varchar(35) NOT NULL,
+  `standard` int(10) unsigned NOT NULL,
+  `gender` char(1) NOT NULL,
+  `contactno` varchar(15) NOT NULL,
+  `dob` date NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `aadharid` varchar(16) DEFAULT NULL,
+  `filename` char(40) DEFAULT NULL,
+  `fileextn` char(3) DEFAULT NULL,
+  `fathername` varchar(35) NOT NULL,
+  `fathercontactno` varchar(15) DEFAULT NULL,
+  `fatheraadharid` varchar(16) DEFAULT NULL,
+  `mothername` varchar(35) NOT NULL,
+  `mothercontactno` varchar(15) DEFAULT NULL,
+  `motheraadharid` varchar(16) DEFAULT NULL,
+  `fatherqualification` varchar(255) DEFAULT NULL,
+  `motherqualification` varchar(255) DEFAULT NULL,
+  `guardianname` varchar(35) DEFAULT NULL,
+  `guardianaddress` varchar(255) DEFAULT NULL,
+  `guardianaadharid` varchar(16) DEFAULT NULL,
+  `status` char(1) NOT NULL DEFAULT 'p',
+  `admissionnumber` varchar(35) DEFAULT NULL,
+  `admissiondate` date DEFAULT NULL,
+  `leavingdate` date DEFAULT NULL,
+  `username` varchar(15) NOT NULL,
+  `studentpassword` char(40) NOT NULL,
+  `parentpassword` char(40) NOT NULL,
+  `otherdetails` char(1) NOT NULL DEFAULT 'n',
+  `details` varchar(6000) DEFAULT NULL,
+  PRIMARY KEY (`studentid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `studymaterials` (
+  `sno` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
+  `idtype` char(1) NOT NULL,
+  `removed` char(1) NOT NULL DEFAULT 'n',
+  `category` char(1) NOT NULL DEFAULT 'a',
+  `uploadedby` int(10) unsigned NOT NULL,
+  `filename` varchar(50) NOT NULL,
+  `fileencrypt` char(40) NOT NULL,
+  PRIMARY KEY (`sno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `subject-parts` (
+  `partid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `subjectid` int(10) unsigned NOT NULL,
+  `partname` varchar(35) NOT NULL,
+  PRIMARY KEY (`partid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `subjects` (
+  `subjectid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `syllabusid` int(10) unsigned NOT NULL,
+  `subjectname` varchar(35) NOT NULL,
+  `partid` int(10) unsigned NOT NULL,
+  `textbookid` int(10) unsigned NOT NULL,
+  `deleted` char(1) NOT NULL DEFAULT 'n',
+  PRIMARY KEY (`subjectid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `subjectteachers` (
+  `sno` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `teacherid` int(10) unsigned NOT NULL,
+  `subjectid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`sno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `syllabus` (
+  `syllabusid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `standard` int(10) unsigned NOT NULL,
+  `syllabusname` varchar(35) NOT NULL,
+  `deleted` char(1) NOT NULL DEFAULT 'n',
+  PRIMARY KEY (`syllabusid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `teachers` (
+  `teacherid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(35) NOT NULL,
+  `gender` char(1) NOT NULL,
+  `contactno` varchar(15) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `qualification` varchar(255) DEFAULT NULL,
+  `username` varchar(15) NOT NULL,
+  `password` char(40) NOT NULL,
+  `aadharid` varchar(16) NOT NULL,
+  `filename` char(40) DEFAULT NULL,
+  `fileextn` char(3) DEFAULT NULL,
+  PRIMARY KEY (`teacherid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `textbooks` (
+  `textbookid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `author` varchar(35) NOT NULL,
+  `mrp` decimal(10,2) unsigned NOT NULL,
+  `filename` varchar(50) NOT NULL,
+  `fileencrypted` char(40) NOT NULL,
+  `available` char(1) NOT NULL DEFAULT 'y',
+  PRIMARY KEY (`textbookid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `timetable` (
+  `periodid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `periodno` int(10) unsigned NOT NULL,
+  `timing` char(11) NOT NULL,
+  `day_` int(10) unsigned NOT NULL,
+  `subjectid` int(10) unsigned NOT NULL,
+  `partid` int(10) unsigned NOT NULL,
+  `classid` int(10) unsigned NOT NULL,
+  `teacherid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`periodid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
