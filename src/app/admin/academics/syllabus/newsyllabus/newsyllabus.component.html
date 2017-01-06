@@ -1,21 +1,24 @@
   <h2>New Syllabus</h2>
 <form [formGroup]="newSyllabusForm" (ngSubmit)="onSubmit()">
   <div formGroupName="syllabus">
-    <input type="text" formControlName="standard">
-    <input type="text" formControlName="syllabusname">
+    <input type="text" formControlName="standard" placeholder="Standard">
+    <input type="text" formControlName="syllabusname" placeholder="SyllabusName">
   </div>
   <div formArrayName="subjects">
     <div *ngFor="let subject of newSyllabusForm.controls['subjects'].controls; let i = index">
     <div formGroupName="{{i}}">
-      <input type="text" formControlName="subjectname">
+      <b (click)="removeSubject(i)">-</b><input type="text" formControlName="subjectname" placeholder="Subject Name"><b (click)="addNewSubjectPart(i)">+</b>
       <div formArrayName="subject-parts">
-        <!--div *ngFor="let part of subject; let j = index">
-        <input type="text" formControlName="{{j}}">
-        </div-->
+        <div *ngFor="let parts of newSyllabusForm.controls['subjects'].controls[i].controls['subject-parts'].controls; let j = index">
+        &nbsp;^-----<input type="text" formControlName="{{j}}" placeholder="Subject Part Name"><b (click)="removeSubjectPart(i,j)">-</b>
+        </div>
       </div>
     </div>
     </div>
   </div>
-<button>submit</button>
+<button [disabled]="!newSyllabusForm.valid">submit</button>
 </form>
 <button (click)="addNewSubject()">Add New Subject</button>
+<div *ngIf="ifsuccess">
+  Success
+</div>
