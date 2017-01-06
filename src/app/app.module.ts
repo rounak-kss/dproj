@@ -15,9 +15,9 @@ import { SyllabusComponent } from './admin/academics/syllabus/syllabus.component
 import { TimetableComponent } from './admin/academics/timetable/timetable.component';
 import { AcademicyearComponent } from './admin/academics/academicyear/academicyear.component';
 import { AcademicsNavigatorComponent } from './admin/academics/academics-navigator/academics-navigator.component';
-import { FeelistComponent } from './admin/academics/feestructure/feelist.component';
 import { DatabaseService } from './services/database.service';
 import { HttpService } from './services/http.service';
+import { FeesParticularComponent } from './admin/academics/feestructure/fees-particular.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { HttpService } from './services/http.service';
     TimetableComponent,
     AcademicyearComponent,
     AcademicsNavigatorComponent,
-    FeelistComponent,
+    FeesParticularComponent,
   ],
   imports: [
     BrowserModule,

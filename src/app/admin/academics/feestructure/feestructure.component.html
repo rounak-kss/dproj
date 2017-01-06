@@ -1,14 +1,27 @@
 <div>
-  <h3>Fees Structure</h3>
-   <!--<mdl-table-selectable mdl-shadow="2"
-       [table-model]="tableModel"
-       [table-model-selected]="selected"
-       (table-model-selectionChanged)="selectionChanged($event)">
-   </mdl-table-selectable>-->
+  <h3>Fees List {{currentYear}}</h3>
+<mdl-list *ngFor="let feesName of feesNameList; let i = index">
+  <mdl-list-item >
+    <mdl-list-item-primary-content>
+        <span>{{feesName}}</span>    
+    </mdl-list-item-primary-content>
+    <mdl-list-item-secondary-action>
+    <mdl-button (click)="editFeeParticular(feesName, i)" mdl-ripple mdl-button-type="mini-fab" >
+      <mdl-icon>border_color</mdl-icon>
+    </mdl-button>
+      <mdl-button (click)="deleteFeeParticular(feesName)" mdl-ripple mdl-button-type="mini-fab">
+        <mdl-icon>remove_circle</mdl-icon>
+      </mdl-button>      
+    </mdl-list-item-secondary-action>
+  </mdl-list-item>
+  <app-fees-particular *ngIf="selectedFeesIndex == i" [feesName]="selectedFees"></app-fees-particular>
+</mdl-list>
 
+
+  
    
    <br/>
-    <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
-    Delete
-  </button>
+    <mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+    Add
+  </mdl-button>
 </div>
