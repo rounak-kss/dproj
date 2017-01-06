@@ -39,10 +39,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-<<<<<<< HEAD
-#rounakURL
-/src/app/services/website.url.ts
-=======
 #websiteURL
 /src/app/services/website.url.ts
->>>>>>> refs/remotes/origin/master
