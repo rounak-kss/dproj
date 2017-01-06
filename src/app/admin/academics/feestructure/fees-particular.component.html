@@ -1,0 +1,12 @@
+<h3>{{feesName}} details!</h3>
+<div>
+  <label>name: </label>
+  <input [(ngModel)]="feesName" placeholder="name" />
+  <br/>
+  <mdl-table-selectable mdl-shadow="2" [table-model]="tableModel" [table-model-selected]="selected" (table-model-selectionChanged)="selectionChanged($event)">
+  </mdl-table-selectable>
+  <br/>
+  <mdl-button (click)="editFeeParticular(feesName, i)" mdl-ripple mdl-button-type="raised" mdl-colored="primary" >
+    SAVE
+  </mdl-button>
+</div>
