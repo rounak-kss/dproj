@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MdlModule } from 'angular2-mdl';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { AcademicsNavigatorComponent } from './admin/academics/academics-navigat
 import { FeelistComponent } from './admin/academics/feestructure/feelist.component';
 import { DatabaseService } from './services/database.service';
 import { HttpService } from './services/http.service';
+import { NewsyllabusComponent } from './admin/academics/syllabus/newsyllabus/newsyllabus.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HttpService } from './services/http.service';
     AcademicyearComponent,
     AcademicsNavigatorComponent,
     FeelistComponent,
+    NewsyllabusComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { HttpService } from './services/http.service';
     HttpModule,
     routing,
     MdlModule,
+    ReactiveFormsModule
   ],
   providers: [DatabaseService, HttpService],
   bootstrap: [AppComponent]

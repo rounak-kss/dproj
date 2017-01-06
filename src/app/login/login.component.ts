@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +7,10 @@ import { DatabaseService } from '../services/database.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private database: DatabaseService) {}
+  
   ngOnInit() {
-      this.database.response.subscribe(
-      data => console.log(data)
-    );
+
   }
-  getdata(){
-     this.database.query({username: "user"});
-  }
+
 
 }

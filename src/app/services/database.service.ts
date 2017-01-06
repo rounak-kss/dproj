@@ -14,3 +14,13 @@ export class DatabaseService {
   }
 
 }
+
+/*
+import { DatabaseService } from 'app/services/database.service';
+
+  this.database.response.subscribe(
+    data => console.log(data)
+  );
+
+  this.database.query({goto:"abc",username: "user"});
+*/

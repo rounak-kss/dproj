@@ -1,0 +1,21 @@
+  <h2>New Syllabus</h2>
+<form [formGroup]="newSyllabusForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="syllabus">
+    <input type="text" formControlName="standard">
+    <input type="text" formControlName="syllabusname">
+  </div>
+  <div formArrayName="subjects">
+    <div *ngFor="let subject of newSyllabusForm.controls['subjects'].controls; let i = index">
+    <div formGroupName="{{i}}">
+      <input type="text" formControlName="subjectname">
+      <div formArrayName="subject-parts">
+        <!--div *ngFor="let part of subject; let j = index">
+        <input type="text" formControlName="{{j}}">
+        </div-->
+      </div>
+    </div>
+    </div>
+  </div>
+<button>submit</button>
+</form>
+<button (click)="addNewSubject()">Add New Subject</button>
