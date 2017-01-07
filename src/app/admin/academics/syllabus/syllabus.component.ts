@@ -11,7 +11,7 @@ export class SyllabusComponent implements OnInit {
   showTab: number = 0;
  ngOnInit() {
   }
-  newSyllabus(view) {
+  ToggleTab(view) {
     this.showTab = view;
   }
 }

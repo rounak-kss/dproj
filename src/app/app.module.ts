@@ -19,6 +19,7 @@ import { DatabaseService } from './services/database.service';
 import { HttpService } from './services/http.service';
 import { NewsyllabusComponent } from './admin/academics/syllabus/newsyllabus/newsyllabus.component';
 import { FeesParticularComponent } from './admin/academics/feestructure/fees-particular.component';
+import { ViewsyllabusComponent } from './admin/academics/syllabus/viewsyllabus/viewsyllabus.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FeesParticularComponent } from './admin/academics/feestructure/fees-par
     AcademicsNavigatorComponent,
     NewsyllabusComponent,
     FeesParticularComponent,
+    ViewsyllabusComponent,
   ],
   imports: [
     BrowserModule,
