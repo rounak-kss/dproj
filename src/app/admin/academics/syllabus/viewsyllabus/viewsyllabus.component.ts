@@ -7,15 +7,28 @@ import { DatabaseService } from 'app/services/database.service';
   styles: []
 })
 export class ViewsyllabusComponent implements OnInit {
-
+  standards: any[] = [];
+  syllabus: any[] = [];
   constructor(private database: DatabaseService) {
     this.database.response.subscribe(
-      data => console.log(data)
+      data => {
+        if(data.goto == "getstandards"){
+          this.standards = data.data;
+        }
+        if(data.goto == "viewsyllabus"){
+          this.syllabus = data.data;
+        }
+      }
     );
   }
 
   ngOnInit() {
-  this.database.query({goto:"abc",username: "user"});
+  this.database.query({goto:"getstandards"});
+  }
+  selectedStandard(value) {
+    if(value != 0){
+      this.database.query({goto:"viewsyllabus",standard:value});
+    }
   }
 
 }

@@ -1,15 +1,10 @@
 <h1>Syllabus</h1>
 <button (click)="ToggleTab(1)">New Syllabus</button>
 <button (click)="ToggleTab(2)">Show All Syllabus</button>
-<button (click)="ToggleTab(3)">New Syllabus</button>
 
 <div *ngIf="showTab == 1">
   <app-newsyllabus></app-newsyllabus>
 </div>
 <div *ngIf="showTab == 2">
   <app-viewsyllabus></app-viewsyllabus>
-</div>
-
-<div *ngIf="showTab == 3">
-  <h2>New Syllabus3</h2>
 </div>

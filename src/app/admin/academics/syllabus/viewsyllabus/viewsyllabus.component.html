@@ -1,3 +1,13 @@
-<p>
-  viewsyllabus works!
-</p>
+<div>
+  <select name="standards" (change)="selectedStandard($event.target.value)">
+    <option value="0">Select Standard</option>
+    <option *ngFor="let i of standards">{{i.standard}}</option>
+  </select>
+</div>
+<div *ngFor="let i of syllabus">
+  <h3>{{i.syllabusname}}</h3>
+  <p *ngFor="let j of i.subjects">
+    <b>{{j.subjectname}}</b>
+    <span *ngFor="let k of j.subject_parts">-- {{k.partname}}</span>
+  </p>
+</div>
